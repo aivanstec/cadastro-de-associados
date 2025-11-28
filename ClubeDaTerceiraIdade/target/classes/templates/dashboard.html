@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <title>Dashbord</title>
+</head>
+<body>
+    <nav>
+        <div class="logo-details">
+            <div class="logo-image">
+                <img src="img/Logo2.png" alt="#">
+            </div>
+            <span class="logo-name">Clube da 3° Idade</span>
+        </div>
+        <div class="menu-items">
+            <ul class="nav-links">
+                <li class="link">
+                    <a href="dashboard.html">
+                        <i class="bi bi-columns-gap"></i>
+                        <span class="link-name">Dahsboard</span>
+                    </a>
+                </li>
+                <li class="link">
+                    <a href="associados.html">
+                        <i class="bi bi-people"></i>
+                        <span class="link-name">Associados</span>
+                    </a>
+                </li>
+                <li class="link">
+                    <a href="pagamentos.html">
+                        <i class="bi bi-cash-stack"></i>
+                        <span class="link-name">Pagamentos</span>
+                    </a>
+                </li>
+                <li class="link">
+                    <a href="relatorios.html">
+                        <i class="bi bi-file-earmark"></i>
+                        <span class="link-name">Relatórios</span>
+                    </a>
+                </li>
+                <li class="link">
+                    <a href="eventos.html">
+                        <i class="bi bi-calendar3"></i>
+                        <span class="link-name">Eventos</span>
+                    </a>
+                </li>
+            </ul>
+            <ul class="logout-mode">
+                <li class="link">
+                    <a href="login.html">
+                        <i class="bi bi-box-arrow-right"></i>
+                        <span class="link-name">Sair</span>
+                    </a>
+                </li>
+                <li class="mode">
+                    <a href="#">
+                        <i class="bi bi-moon-stars"></i>
+                        <span class="link-name">Modo Escuro</span>
+                    </a>
+                    <div class="mode-toggle">
+                        <span class="switch"></span>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <section class="dashbord">
+        <div class="top">
+            <i class="bi bi-list sidebar-toggle"></i>
+            <div class="text-box">
+                <span>Olá, <b>Secretário</b>!</span>
+            </div>
+        </div>
+        <div class="dash-content">
+            <div class="overview">
+                <div class="title">
+                    <span class="text">Dashbord</span>
+                </div>
+            </div>
+            <div class="boxes">
+                <div class="box box1">
+                    <div class="icon">
+                        <i class="bi bi-people"></i>
+                    </div>
+                    <div class="card-info">
+                        <span class="text">Total de Associados</span>
+                        <span class="number">2.000</span>
+                    </div>
+                </div>
+                <div class="box box2">
+                    <div class="icon">
+                        <i class="bi bi-person-vcard"></i>
+                    </div>
+                    <div class="card-info">
+                        <span class="text">Carteirinhas a Vencer</span>
+                        <span class="number">15</span>
+                    </div>
+                </div>
+                <div class="box box3">
+                    <div class="icon">
+                        <i class="bi bi-cake"></i>
+                    </div>
+                    <div class="card-info">
+                        <span class="text">Aniversariantes (Mês)</span>
+                        <span class="number">8</span>
+                    </div>
+                </div>
+                <div class="box box4">
+                    <div class="icon">
+                        <i class="bi bi-currency-dollar"></i>
+                    </div>
+                    <div class="card-info">
+                        <span class="text">Pagamentos Pendentes</span>
+                        <span class="number">42</span>
+                    </div>
+                </div>
+            </div>
+            <div class="activity">
+                <div class="activity-data">
+                        <span class="text">Próximos Eventos</span>
+                    <ul>
+                        <li>
+                            <span class="item-nome">Baile de Aniversário</span>
+                            <span class="item-details">28/10/2025</span>
+                        </li>
+                        <li>
+                            <span class="item-nome">Bingo Beneficente</span>
+                            <span class="item-details">05/11/2025</span>
+                        </li>
+                        <li>
+                            <span class="item-nome">Reunião da Diretoria</span>
+                            <span class="item-details">10/11/2025</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="activity-data">
+                        <span class="text">Aniversariantes (Mês)</span>
+                    <ul>
+                        <li>
+                            <span class="item-nome">Baile de Aniversário</span>
+                            <span class="item-details">28/10/2025</span>
+                        </li>
+                        <li>
+                            <span class="item-nome">Bingo Beneficente</span>
+                            <span class="item-details">05/11/2025</span>
+                        </li>
+                        <li>
+                            <span class="item-nome">Reunião da Diretoria</span>
+                            <span class="item-details">10/11/2025</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+</html>

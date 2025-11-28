@@ -1,0 +1,59 @@
+package br.com.clubedaterceiraidade.cadastrodeassociado.mensagens;
+
+import br.com.clubedaterceiraidade.cadastrodeassociado.associado.Associado;
+import br.com.clubedaterceiraidade.cadastrodeassociado.associado.AssociadoRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import java.util.List;
+
+@Controller
+@RequestMapping("/mensagens")
+public class MensagemController {
+
+    @Autowired
+    private MensagemRepository mensagemRepository;
+
+    @Autowired
+    private AssociadoRepository associadoRepository;
+
+    @GetMapping
+    public String listarMensagens(Model model) {
+        model.addAttribute("mensagens", mensagemRepository.findAll());
+        return "mensagens/historico";
+    }
+
+    @GetMapping("/nova")
+    public String mostrarFormulario(Model model) {
+        List<Associado> associados = associadoRepository.findAll();
+        model.addAttribute("associados", associados);
+        model.addAttribute("mensagem", new Mensagem());
+        return "mensagens/formulario";
+    }
+
+    @PostMapping("/enviar")
+    public String enviarMensagem(@ModelAttribute("mensagem") Mensagem mensagem,
+                                 @RequestParam(required = false) List<Long> associadoIds,
+                                 RedirectAttributes ra) {
+
+        System.out.println("--- ENVIANDO MENSAGEM ---");
+        System.out.println("Título: " + mensagem.getTitulo());
+        System.out.println("Conteúdo: " + mensagem.getConteudo());
+
+        if (associadoIds == null || associadoIds.isEmpty()) {
+            mensagem.setDestinatarios("Todos os associados");
+            System.out.println("Destinatários: Todos");
+        } else {
+            List<Associado> destinatarios = associadoRepository.findAllById(associadoIds);
+            mensagem.setDestinatarios("IDs: " + associadoIds.toString());
+            System.out.println("Destinatários: " + destinatarios.stream().map(Associado::getNome).toList());
+        }
+
+        mensagemRepository.save(mensagem);
+        ra.addFlashAttribute("mensagem", "Mensagem enviada com sucesso!");
+        return "redirect:/mensagens";
+    }
+}

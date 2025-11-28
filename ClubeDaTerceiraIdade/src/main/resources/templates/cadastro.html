@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="css/cadastro.css">
+    <title>Cadastro</title>
+</head>
+<body>
+<nav>
+    <div class="logo-details">
+        <div class="logo-image">
+            <img src="img/Logo2.png" alt="#">
+        </div>
+        <span class="logo-name">Clube da 3° Idade</span>
+    </div>
+    <div class="menu-items">
+        <ul class="nav-links">
+            <li class="link">
+                <a href="dashboard.html">
+                    <i class="bi bi-columns-gap"></i>
+                    <span class="link-name">Dahsboard</span>
+                </a>
+            </li>
+            <li class="link">
+                <a href="associados.html">
+                    <i class="bi bi-people"></i>
+                    <span class="link-name">Associados</span>
+                </a>
+            </li>
+            <li class="link">
+                <a href="pagamentos.html">
+                    <i class="bi bi-cash-stack"></i>
+                    <span class="link-name">Pagamentos</span>
+                </a>
+            </li>
+            <li class="link">
+                <a href="relatorios.html">
+                    <i class="bi bi-file-earmark"></i>
+                    <span class="link-name">Relatórios</span>
+                </a>
+            </li>
+            <li class="link">
+                <a href="eventos.html">
+                    <i class="bi bi-calendar3"></i>
+                    <span class="link-name">Eventos</span>
+                </a>
+            </li>
+        </ul>
+        <ul class="logout-mode">
+            <li class="link">
+                <a href="login.html">
+                    <i class="bi bi-box-arrow-right"></i>
+                    <span class="link-name">Sair</span>
+                </a>
+            </li>
+            <li class="mode">
+                <a href="#">
+                    <i class="bi bi-moon-stars"></i>
+                    <span class="link-name">Modo Escuro</span>
+                </a>
+                <div class="mode-toggle">
+                    <span class="switch"></span>
+                </div>
+            </li>
+        </ul>
+    </div>
+</nav>
+<section class="associados">
+    <div class="top">
+        <i class="bi bi-list sidebar-toggle"></i>
+        <div class="text-box">
+            <span>Olá, <b>Secretário</b>!</span>
+        </div>
+    </div>
+    <div class="dash-content">
+        <div class="overview">
+            <div class="title">
+                <span class="text">Cadastrar Novo Associado</span>
+            </div>
+        </div>
+    </div>
+    <div class="form-container">
+        <form #cadastroForm="ngForm" (ngSubmit)="onSubmit()">
+            <fieldset>
+                <legend>Dados Pessoais</legend>
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="n_associado">Nº Associado *</label>
+                        <input type="number" id="n_associado" name="n_associado" required [(ngModel)]="novoAssociado.n_associado">
+                    </div>
+                    <div class="form-group col-span-2">
+                        <label for="nome">Nome Completo *</label>
+                        <input type="text" id="nome" name="nome" maxlength="50" required [(ngModel)]="novoAssociado.nome">
+                    </div>
+                    <div class="form-group">
+                        <label for="rg">RG</label>
+                        <input type="text" id="rg" name="rg" maxlength="12" [(ngModel)]="novoAssociado.rg">
+                    </div>
+                    <div class="form-group">
+                        <label for="cpf">CPF *</label>
+                        <input type="text" id="cpf" name="cpf" maxlength="12" required [(ngModel)]="novoAssociado.cpf">
+                    </div>
+                    <div class="form-group">
+                        <label for="data_cadastro">Data de Cadastro *</label>
+                        <input type="date" id="data_cadastro" name="data_cadastro" required [(ngModel)]="novoAssociado.data_cadastro">
+                    </div>
+                    <div class="form-group">
+                        <label for="estado_civil">Estado Civil *</label>
+                        <select id="estado_civil" name="estado_civil_id" required [(ngModel)]="novoAssociado.estado_civil_id">
+                            <option value="" disabled selected>Selecione...</option>
+                            <option value="1">Solteiro(a)</option>
+                            <option value="2">Casado(a)</option>
+                            <option value="3">Divorciado(a)</option>
+                            <option value="4">Viúvo(a)</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="escolaridade">Escolaridade</label>
+                        <input type="text" id="escolaridade" name="escolaridade" maxlength="30" [(ngModel)]="novoAssociado.escolaridade">
+                    </div>
+                    <div class="form-group">
+                        <label for="contato_emergencia">Contato de Emergência</label>
+                        <input type="tel" id="contato_emergencia" name="contato_emergencia" maxlength="11" [(ngModel)]="novoAssociado.contato_emergencia">
+                    </div>
+                </div>
+            </fieldset>
+            <fieldset>
+                <legend>Endereço</legend>
+                <div class="form-grid">
+
+                    <div class="form-group">
+                        <label for="cep">CEP</label>
+                        <input type="text" id="cep" name="cep" maxlength="8" [(ngModel)]="novoAssociado.cep">
+                    </div>
+                    <div class="form-group">
+                        <label for="estado">Estado (UF) *</label>
+                        <select id="estado" name="estado_id" required [(ngModel)]="novoAssociado.estado_id">
+                            <option value="" disabled selected>Selecione um Estado...</option>
+                            <option value="1">SP</option>
+                            <option value="2">PR</option>
+                            <option value="3">MG</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-span-2">
+                        <label for="cidade">Cidade *</label>
+                        <select id="cidade" name="cidade_id" required [(ngModel)]="novoAssociado.cidade_id">
+                            <option value="" disabled selected>Selecione uma Cidade...</option>
+                            <option value="1">Assis</option>
+                            <option value="2">Marília</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="bairro">Bairro</label>
+                        <input type="text" id="bairro" name="bairro" maxlength="20" [(ngModel)]="novoAssociado.bairro">
+                    </div>
+                    <div class="form-group">
+                        <label for="numero">Número</label>
+                        <input type="number" id="numero" name="numero" [(ngModel)]="novoAssociado.numero">
+                    </div>
+                    <div class="form-group">
+                        <label for="complemento">Complemento</label>
+                        <input type="text" id="complemento" name="complemento" maxlength="50" [(ngModel)]="novoAssociado.complemento">
+                    </div>
+                </div>
+            </fieldset>
+            <fieldset>
+                <legend>Outras Informações</legend>
+                <div class="form-grid">
+                    <div class="form-group col-span-3">
+                        <label for="observacoes">Observações</label>
+                        <textarea id="observacoes" name="observacoes" maxlength="70" [(ngModel)]="novoAssociado.observacoes"></textarea>
+                    </div>
+                </div>
+            </fieldset>
+            <div class="form-actions">
+                <a href="associados.html" class="btn btn-cancel">Cancelar</a>
+
+                <button type="submit" class="btn btn-submit">Salvar Cadastro</button>
+            </div>
+        </form>
+    </div>
+</section>
+<script src="script.js"></script>
+</body>
+</html>
